@@ -1,0 +1,13 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 24px;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+

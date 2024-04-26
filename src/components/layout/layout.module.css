@@ -1,0 +1,11 @@
+.app {
+  font-family: "Jet Brains Mono", sans-serif;
+  background-color: #FFF;
+}
+
+.title {
+  font-size: 24px;
+  color: #000;
+  margin-bottom: 40px;
+}
+

@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.btn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  width: 150px;
+  max-width: 100%
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  gap: 24px;
+}
+
+
+.movieImage {
+  object-fit: cover;
+  object-position: center;
+  width: 200px;
+  max-width: 100%
+}
