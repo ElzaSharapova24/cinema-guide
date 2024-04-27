@@ -2,19 +2,20 @@ import styles from "./movie-card.module.css";
 import clsx from "clsx";
 import {Link} from "react-router-dom";
 import {useParams} from "react-router";
-import {Movie} from "../../../../utils/types";
+import {Movie} from "../../../utils/types";
 
-interface MovieCardProps {
-    movies: Movie[];
-}
 
-function MovieCard({movies}: MovieCardProps) {
+function MovieCard({movies}: Movie) {
+    const isPopular = true;
     const {id} = useParams();
+
+    const path = isPopular ? 'popular' : 'upcoming';
     const movie = movies.find(movie => movie.id == id);
+
     return (
         movie ? (
             <section>
-                <Link to={"/list"}>
+                <Link to={`/${path}`}>
                     <button className={clsx(styles.btn)}>Назад</button>
                 </Link>
                 <div className={clsx(styles.wrapper)}>

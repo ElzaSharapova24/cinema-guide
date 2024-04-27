@@ -1,6 +1,6 @@
 .app {
-  font-family: "Jet Brains Mono", sans-serif;
   background-color: #FFF;
+  padding-bottom: 40px;
 }
 
 .title {
@@ -10,15 +10,18 @@
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-  gap: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtitle {
+  margin-bottom: 20px;
 }
 
 .image {
   object-fit: cover;
   object-position: center;
   max-width: 100%;
-  margin-bottom: 20px;
+  width: 500px;
 }
 

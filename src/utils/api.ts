@@ -1,7 +1,7 @@
 import {Movie} from "./types";
 
 export const getPopularMovies = async () => {
-    const response = await  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', {
+    const response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', {
         method: 'GET',
         headers: {
             accept: 'application/json',
@@ -9,11 +9,11 @@ export const getPopularMovies = async () => {
         }
     })
     const data = await response.json();
-    return data.results as  Promise<Movie[]>;
+    return data.results as Promise<Movie[]>;
 }
 
 export const getUpcomingMovies = async () => {
-    const response = await  fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', {
+    const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', {
         method: 'GET',
         headers: {
             accept: 'application/json',

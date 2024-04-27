@@ -4,8 +4,11 @@ import {Link} from "react-router-dom";
 
 
 function ListsMovies({ movies }) {
+    const isPopular = true;
+    const path = isPopular ? 'popular' : 'upcoming';
+
     return (
-        <section>
+        <section className={clsx(styles.container)}>
             <Link to={"/"}>
                 <button>&larr;</button>
             </Link>
@@ -13,7 +16,7 @@ function ListsMovies({ movies }) {
             <div className={clsx(styles.wrapper)}>
                 {
                     Array.isArray(movies) && movies.map((movie, index) => (
-                        <Link to={`/card/${movie.id}`} key={index}>
+                        <Link to={`/${path}/${movie.id}`} key={index}>
                             <article className={clsx(styles)}>
                                 <img className={clsx(styles.movieImage)} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
                                 <h3 className={clsx(styles.subtitle)}>{movie.title}</h3>

@@ -3,30 +3,39 @@ import clsx from "clsx";
 import AppHeader from "../app-header";
 import Layout from "../layout";
 import {Route, Routes} from "react-router";
-import ListsMovies from "../categories-movies/lists-movies";
-import MovieCard from "../categories-movies/lists-movies/movie-card";
 import {useEffect, useState} from "react";
-import {getPopularMovies} from "../../utils/api";
+import {getPopularMovies, getUpcomingMovies} from "../../utils/api";
 import {Movie} from "../../utils/types";
+import ListsMovies from "../lists-movies";
+import MovieCard from "../lists-movies/movie-card";
 
 
 
 function App() {
-    const [movies, setMovies] = useState<Movie>([]);
+    const [popular, setPopular] = useState<Movie>([]);
+    const [upcoming, setUpcoming] = useState<Movie>([]);
 
     useEffect(() => {
-        getPopularMovies().then((movies: Movie[]) => setMovies(movies));
-    }, [setMovies]);
+        getPopularMovies().then((popular: Movie[]) => setPopular(popular));
+    }, [setPopular]);
+
+    useEffect(() => {
+       getUpcomingMovies().then((upcoming: Movie[]) => setUpcoming(upcoming));
+    }, [setUpcoming]);
 
     return (
-        <div className={clsx(styles.container)}>
-            <AppHeader/>
-            <Routes>
-                <Route path={"/"} element={<Layout/>}/>
-                <Route path={"/lists"} element={<ListsMovies movies={movies}/>}/>
-                <Route path={"/card/:id"} element={<MovieCard movies={movies}/>}/>
-            </Routes>
-        </div>
+       <>
+           <AppHeader/>
+           <div className={clsx(styles.container)}>
+               <Routes>
+                   <Route path={"/"} element={<Layout/>}/>
+                   <Route path={"/popular"} element={<ListsMovies movies={popular}/>}/>
+                   <Route path={"/upcoming"} element={<ListsMovies movies={upcoming} />}/>
+                   <Route path={"/popular/:id"} element={<MovieCard movies={popular}/>}/>
+                   <Route path={"/upcoming/:id"} element={<MovieCard movies={upcoming}/>}/>
+               </Routes>
+           </div>
+       </>
     )
 }
 
