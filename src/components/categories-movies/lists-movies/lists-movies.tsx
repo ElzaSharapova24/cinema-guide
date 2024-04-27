@@ -3,65 +3,40 @@ import styles from "./lists-movies.module.css";
 import {Link} from "react-router-dom";
 
 
-function ListsMovies() {
-
+function ListsMovies({ movies }) {
     return (
         <section>
             <Link to={"/"}>
-                <button className={clsx(styles.btn)}>Назад</button>
+                <button>&larr;</button>
             </Link>
+                <h2 className={clsx(styles.title)}>Список фильмов</h2>
             <div className={clsx(styles.wrapper)}>
-                <h2>250 лучших фильмов</h2>
-                <img className={clsx(styles.image)} src="src/images/top250.png" alt={'a'}/>
-            </div>
-            <div className={clsx(styles.inner)}>
-                <Link to={"/card"}>
-                    <article>
-                        <img className={clsx(styles.movieImage)} src="src/images/island.jpg" alt={'a'}/>
-                        <h3>Остров проклятых</h3>
-                        <span>9.0</span>
-                        <span>19 февраля 2010 года</span>
-                        <p>2 ч 18 мин</p>
-                    </article>
-                </Link>
-                <article>
-                    <img className={clsx(styles.movieImage)} src="src/images/island.jpg" alt={'a'}/>
-                    <h3>Остров проклятых</h3>
-                    <span>9.0</span>
-                    <span>19 февраля 2010 года</span>
-                    <p>2 ч 18 мин</p>
-                </article>
-                <article>
-                    <img className={clsx(styles.movieImage)} src="src/images/island.jpg" alt={'a'}/>
-                    <h3>Остров проклятых</h3>
-                    <span>9.0</span>
-                    <span>19 февраля 2010 года</span>
-                    <p>2 ч 18 мин</p>
-                </article>
-                <article>
-                    <img className={clsx(styles.movieImage)} src="src/images/island.jpg" alt={'a'}/>
-                    <h3>Остров проклятых</h3>
-                    <span>9.0</span>
-                    <span>19 февраля 2010 года</span>
-                    <p>2 ч 18 мин</p>
-                </article>
-                <article>
-                    <img className={clsx(styles.movieImage)} src="src/images/island.jpg" alt={'a'}/>
-                    <h3>Остров проклятых</h3>
-                    <span>9.0</span>
-                    <span>19 февраля 2010 года</span>
-                    <p>2 ч 18 мин</p>
-                </article>
-                <article>
-                    <img className={clsx(styles.movieImage)} src="src/images/island.jpg" alt={'a'}/>
-                    <h3>Остров проклятых</h3>
-                    <span>9.0</span>
-                    <span>19 февраля 2010 года</span>
-                    <p>2 ч 18 мин</p>
-                </article>
+                {
+                    Array.isArray(movies) && movies.map((movie, index) => (
+                        <Link to={`/card/${movie.id}`} key={index}>
+                            <article className={clsx(styles)}>
+                                <img className={clsx(styles.movieImage)} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
+                                <h3 className={clsx(styles.subtitle)}>{movie.title}</h3>
+                                <div className={clsx(styles.inner)}>
+                                    <div>
+                                        <strong className={clsx(styles.info)}>Рейтинг фильма: </strong>
+                                        <span>{movie.vote_average}</span>
+                                    </div>
+                                    <div>
+                                        <strong className={clsx(styles.info)}>Количество проголосовавших: </strong>
+                                        <span>{movie.vote_count}</span>
+                                    </div>
+                                    <div>
+                                        <strong className={clsx(styles.info)}>Дата выхода: </strong>
+                                        <span>{movie.release_date}</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </Link>
+                    ))
+                }
             </div>
         </section>
     )
 }
-
 export default ListsMovies;

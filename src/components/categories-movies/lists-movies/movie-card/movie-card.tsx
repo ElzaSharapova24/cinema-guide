@@ -1,24 +1,51 @@
 import styles from "./movie-card.module.css";
 import clsx from "clsx";
 import {Link} from "react-router-dom";
+import {useParams} from "react-router";
+import {Movie} from "../../../../utils/types";
 
-function MovieCard () {
+interface MovieCardProps {
+    movies: Movie[];
+}
 
-    return(
-        <section className={clsx(styles.wrapper)}>
-            <Link to={"/lists"}>
-                <button className={clsx(styles.btn)}>Назад</button>
-            </Link>
-            <div>
-                <h2>Остров Проклятых</h2>
-                <span>9.0</span>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo adipisci omnis alias sunt voluptates explicabo. Similique saepe architecto incidunt libero, accusantium at, ipsa laboriosam impedit reiciendis eveniet quos, iure dolore!</p>
-                <p>Длительность 2.18</p>
-                <p>Дата выхода:122344</p>
-                <p>Жанр</p>
-            </div>
-            <img className={clsx(styles.image)} src="src/images/island.jpg" alt={'a'}/>
-        </section>
+function MovieCard({movies}: MovieCardProps) {
+    const {id} = useParams();
+    const movie = movies.find(movie => movie.id == id);
+    return (
+        movie ? (
+            <section>
+                <Link to={"/list"}>
+                    <button className={clsx(styles.btn)}>Назад</button>
+                </Link>
+                <div className={clsx(styles.wrapper)}>
+                    <div className={clsx(styles.inner)}>
+                        <h2 className={clsx(styles.title)}>{movie.title}</h2>
+                        <p className={clsx(styles.description)}>{movie.overview}</p>
+                       <div>
+                           <strong>Рейтинг фильма: </strong>
+                           <span>{movie.vote_average}</span>
+                       </div>
+                        <div>
+                            <strong>Количество проголосовавших: </strong>
+                            <span>{movie.popularity}</span>
+                        </div>
+                        <div>
+                            <strong>Дата выхода: </strong>
+                            <span>{movie.release_date}</span>
+                        </div>
+                    </div>
+                    <img className={clsx(styles.image)} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                         alt={movie.title}/>
+                </div>
+            </section>
+        ) : (
+            <>
+                <Link to={"/list"}>
+                    <h3>Страница не найдена</h3>
+                    <button></button>
+                 </Link>
+            </>
+        )
     )
 }
 
