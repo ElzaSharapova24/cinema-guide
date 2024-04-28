@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from "./movies-list.module.css"
 import {Link} from "react-router-dom";
+import Loader from "../loader";
 
 
 function MoviesList({movies, path}) {
@@ -16,7 +17,7 @@ function MoviesList({movies, path}) {
             </Link>
             <h2 className={clsx(styles.title)}>Список фильмов</h2>
             <div className={clsx(styles.wrapper)}>
-                {
+                { !movies ? (<Loader/>) : (
                     Array.isArray(movies) && movies.map((movie, index) => (
                         <Link to={`/${path}/${movie.id}`} key={index}>
                             <article className={clsx(styles)}>
@@ -40,6 +41,7 @@ function MoviesList({movies, path}) {
                             </article>
                         </Link>
                     ))
+                )
                 }
             </div>
         </section>

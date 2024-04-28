@@ -15,6 +15,7 @@ function App() {
     const [upcoming, setUpcoming] = useState<Movie>([]);
     const [rating, setRating] = useState<Movie>([]);
     const [playing, setPlaying] = useState<Movie>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const popularPath = 'popular';
     const upcomingPath = 'upcoming';
@@ -33,10 +34,10 @@ function App() {
             <AppHeader/>
             <div className={clsx(styles.container)}>
                 <Routes>
-                    <Route path={"/"} element={<Layout/>}/>
-                    <Route path={"/popular"} element={<MoviesList movies={popular} path={popularPath}/>}/>
-                    <Route path={"/upcoming"} element={<MoviesList movies={upcoming} path={upcomingPath}/>}/>
-                    <Route path={"/rating"} element={<MoviesList movies={rating} path={ratingPath}/>}/>
+                    <Route path={"/"} element={<Layout isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
+                    <Route path={"/popular"} element={<MoviesList movies={popular} path={popularPath} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
+                    <Route path={"/upcoming"} element={<MoviesList movies={upcoming} path={upcomingPath} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
+                    <Route path={"/rating"} element={<MoviesList movies={rating} path={ratingPath} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
                     <Route path={"/playing"} element={<MoviesList movies={playing} path={playingPath}/>}/>
                     <Route path={"/popular/:id"} element={<MovieInfo movies={popular} path={popularPath}/>}/>
                     <Route path={"/upcoming/:id"} element={<MovieInfo movies={upcoming} path={upcomingPath}/>}/>

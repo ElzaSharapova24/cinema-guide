@@ -5,9 +5,10 @@ import movie from "../../images/movies.jpg";
 import film from "../../images/films.png";
 import rating from "../../images/rating.jpg";
 import playing from "../../images/playing.png";
+import Loader from "../loader";
 
 
-function Layout() {
+function Layout({isLoading, setIsLoading}) {
 
     return (
         <div className={clsx(styles.app)}>
@@ -15,7 +16,7 @@ function Layout() {
                 <h1 className={clsx(styles.title)}>
                     Категории фильмов
                 </h1>
-                <div className={clsx(styles.wrapper)}>
+                <div className={clsx(styles.wrapper)} onLoad={() => setIsLoading(false)}>
                     <CategoriesItem to={"/popular"}
                                     title="Популярные фильмы"
                                     imageSrc={film}
@@ -24,6 +25,8 @@ function Layout() {
                                     title="Недавние фильмы"
                                     imageSrc={movie}
                                     altText="Недавние  фильмы"/>
+                    {isLoading && <Loader/>}
+
                     <CategoriesItem to="/rating"
                                     title="Лучшие фильмы"
                                     imageSrc={rating}
