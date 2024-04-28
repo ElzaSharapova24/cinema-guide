@@ -1,25 +1,18 @@
+.container {
+  margin-bottom: 20px;
+}
+
 .wrapper {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding-top: 100px;
+  padding-top: 30px;
+  border-bottom: 20px;
 }
 
 .image {
-  object-fit: cover;
-  object-position: center;
   width: 250px;
   max-width: 100%;
-}
-
-.btn {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
 }
 
 .inner {

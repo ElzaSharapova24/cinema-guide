@@ -1,30 +1,38 @@
 import clsx from "clsx";
 import styles from "./layout.module.css"
+import CategoriesItem from "../categories-item";
+import movie from "../../images/movies.jpg";
+import film from "../../images/films.png";
+import rating from "../../images/rating.jpg";
+import playing from "../../images/playing.png";
 
-import {Link} from "react-router-dom";
 
-function Layout () {
+function Layout() {
 
-    return(
+    return (
         <div className={clsx(styles.app)}>
             <main>
                 <h1 className={clsx(styles.title)}>
-                    Список категорий
+                    Категории фильмов
                 </h1>
-          <div className={clsx(styles.wrapper)}>
-              <article>
-                  <Link to={"/popular"}>
-                      <h2 className={clsx(styles.subtitle)}>Популярные фильмы</h2>
-                      <img className={clsx(styles.image)} src="src/images/top250.png" alt={'a'}/>
-                  </Link>
-              </article>
-              <article>
-                  <Link to={"/upcoming"}>
-                      <h2 className={clsx(styles.subtitle)}>Недавно вышедшие фильмы</h2>
-                      <img className={clsx(styles.image)} src="src/images/top250.png" alt={'a'}/>
-                  </Link>
-              </article>
-          </div>
+                <div className={clsx(styles.wrapper)}>
+                    <CategoriesItem to={"/popular"}
+                                    title="Популярные фильмы"
+                                    imageSrc={film}
+                                    altText="Популярные фильмы"/>
+                    <CategoriesItem to="/upcoming"
+                                    title="Недавние фильмы"
+                                    imageSrc={movie}
+                                    altText="Недавние  фильмы"/>
+                    <CategoriesItem to="/rating"
+                                    title="Лучшие фильмы"
+                                    imageSrc={rating}
+                                    altText="Недавно вышедшие фильмы"/>
+                    <CategoriesItem to="/playing"
+                                    title="Сейчас в кинотеатрах"
+                                    imageSrc={playing}
+                                    altText="Сейчас в кинотеатрах"/>
+                </div>
             </main>
         </div>
     )

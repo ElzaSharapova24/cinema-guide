@@ -1,0 +1,16 @@
+
+.subtitle {
+  margin-bottom: 20px;
+}
+
+.image {
+  max-width: 100%;
+  width: 450px;
+  transition: transform .3s ease-in-out;
+  border-radius: 20px;
+  height: 400px;
+}
+
+.image:hover {
+  transform: scale(1.02);
+}
