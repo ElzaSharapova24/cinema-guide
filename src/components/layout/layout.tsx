@@ -9,7 +9,6 @@ import Loader from "../loader";
 
 
 function Layout({isLoading, setIsLoading}) {
-
     return (
         <div className={clsx(styles.app)}>
             <main>

@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import clsx from "clsx";
 import styles from "./categories-item.module.css"
 
+
 function CategoriesItem ({ to, title, imageSrc, altText }) {
     return (
         <article>

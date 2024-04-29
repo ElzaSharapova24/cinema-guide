@@ -3,8 +3,8 @@ import styles from "./app-header.module.css";
 import {Link} from "react-router-dom";
 import movieIcon from "../../images/movie.svg";
 
-function AppHeader() {
 
+function AppHeader() {
     return (
         <header className={clsx(styles.header)}>
                 <Link to={"/"}>

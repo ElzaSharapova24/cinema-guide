@@ -1,5 +1,6 @@
 import {Movie} from "./types";
 
+const BaseUrl = 'https://api.themoviedb.org/3';
 async function fetchMovies(url: string): Promise<Movie[]> {
     const response = await fetch(url, {
         method: 'GET',
@@ -12,7 +13,7 @@ async function fetchMovies(url: string): Promise<Movie[]> {
     return data.results;
 }
 
-export const getPopularMovies = () => fetchMovies('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc');
-export const getUpcomingMovies = () => fetchMovies('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1');
-export const getTopMovies = () => fetchMovies('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1');
-export const getNowPlayingMovies = () => fetchMovies('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1');
+export const getPopularMovies = () => fetchMovies(`${BaseUrl}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`);
+export const getUpcomingMovies = () => fetchMovies(`${BaseUrl}/movie/upcoming?language=en-US&page=1`);
+export const getTopMovies = () => fetchMovies(`${BaseUrl}/movie/top_rated?language=en-US&page=1`);
+export const getNowPlayingMovies = () => fetchMovies(`${BaseUrl}/movie/now_playing?language=en-US&page=1`);

@@ -1,0 +1,18 @@
+.btn {
+  border: 2px solid #868181;
+  border-radius: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transition: border 0.3s ease-in-out;
+}
+
+.icon path {
+  transition: fill 0.3s ease-in-out;
+}
+
+.btn:hover, .icon:hover path {
+  fill: #c2c1cb;
+  border: 2px solid #c2c1cb;
+}

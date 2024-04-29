@@ -8,19 +8,15 @@ import {getNowPlayingMovies, getPopularMovies, getTopMovies, getUpcomingMovies} 
 import {Movie} from "../../utils/types";
 import MovieInfo from "../movies-list/movie-info";
 import MoviesList from "../movies-list";
+import NotFound from "../not-found";
 
 
 function App() {
-    const [popular, setPopular] = useState<Movie>([]);
-    const [upcoming, setUpcoming] = useState<Movie>([]);
-    const [rating, setRating] = useState<Movie>([]);
-    const [playing, setPlaying] = useState<Movie>([]);
+    const [popular, setPopular] = useState<Movie>(null);
+    const [upcoming, setUpcoming] = useState<Movie>(null);
+    const [rating, setRating] = useState<Movie>(null);
+    const [playing, setPlaying] = useState<Movie>(null);
     const [isLoading, setIsLoading] = useState(true);
-
-    const popularPath = 'popular';
-    const upcomingPath = 'upcoming';
-    const ratingPath = 'rating';
-    const playingPath = 'playing';
 
     useEffect(() => {
         getPopularMovies().then((popular: Movie[]) => setPopular(popular));
@@ -35,14 +31,15 @@ function App() {
             <div className={clsx(styles.container)}>
                 <Routes>
                     <Route path={"/"} element={<Layout isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
-                    <Route path={"/popular"} element={<MoviesList movies={popular} path={popularPath} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
-                    <Route path={"/upcoming"} element={<MoviesList movies={upcoming} path={upcomingPath} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
-                    <Route path={"/rating"} element={<MoviesList movies={rating} path={ratingPath} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
-                    <Route path={"/playing"} element={<MoviesList movies={playing} path={playingPath}/>}/>
-                    <Route path={"/popular/:id"} element={<MovieInfo movies={popular} path={popularPath}/>}/>
-                    <Route path={"/upcoming/:id"} element={<MovieInfo movies={upcoming} path={upcomingPath}/>}/>
-                    <Route path={"/rating/:id"} element={<MovieInfo movies={rating} path={ratingPath}/>}/>
-                    <Route path={"/playing/:id"} element={<MovieInfo movies={playing} path={playingPath}/>}/>
+                    <Route path={"/popular"} element={<MoviesList movies={popular}/>}/>
+                    <Route path={"/upcoming"} element={<MoviesList movies={upcoming}/>}/>
+                    <Route path={"/rating"} element={<MoviesList movies={rating}/>}/>
+                    <Route path={"/playing"} element={<MoviesList movies={playing}/>}/>
+                    <Route path={"/popular/:id"} element={<MovieInfo movies={popular}/>}/>
+                    <Route path={"/upcoming/:id"} element={<MovieInfo movies={upcoming}/>}/>
+                    <Route path={"/rating/:id"} element={<MovieInfo movies={rating}/>}/>
+                    <Route path={"/playing/:id"} element={<MovieInfo movies={playing}/>}/>
+                    <Route path={"*"} element={<NotFound/>}/>
                 </Routes>
             </div>
         </>
