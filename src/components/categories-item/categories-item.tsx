@@ -5,7 +5,7 @@ import styles from "./categories-item.module.css"
 
 function CategoriesItem ({ to, title, imageSrc, altText }) {
     return (
-        <article>
+        <article data-cy="category-movie">
             <Link to={to}>
                 <h2 className={clsx(styles.subtitle)}>{title}</h2>
                 <img className={clsx(styles.image)} src={imageSrc} alt={altText}/>

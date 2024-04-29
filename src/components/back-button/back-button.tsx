@@ -12,7 +12,7 @@ function BackButton() {
     }
 
     return (
-        <button className={clsx(styles.btn)} onClick={goBack}>
+        <button className={clsx(styles.btn)} onClick={goBack} data-cy="back-button">
             <svg className={clsx(styles.icon)} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
                  viewBox="0 0 16 16">
                 <path fill="#868181" fillOpacity="1"

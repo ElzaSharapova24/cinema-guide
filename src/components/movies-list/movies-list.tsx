@@ -24,7 +24,7 @@ function MoviesList({movies}) {
                     <Loader/>
                 ) : (
                     Array.isArray(movies) && movies.map((movie, index) => (
-                        <Link to={`${movie.id}`} key={index}>
+                        <Link to={`${movie.id}`} key={index} data-cy="movie">
                             <article className={clsx(styles)}>
                                 <img className={clsx(styles.movieImage)}
                                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>

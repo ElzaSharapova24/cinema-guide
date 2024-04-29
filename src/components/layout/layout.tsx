@@ -16,7 +16,7 @@ function Layout({isLoading, setIsLoading}) {
                     Категории фильмов
                 </h1>
                 <div className={clsx(styles.wrapper)} onLoad={() => setIsLoading(false)}>
-                    <CategoriesItem to={"/popular"}
+                    <CategoriesItem  to={"/popular"}
                                     title="Популярные фильмы"
                                     imageSrc={film}
                                     altText="Популярные фильмы"/>
