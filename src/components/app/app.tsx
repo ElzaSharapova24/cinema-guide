@@ -25,6 +25,8 @@ function App() {
         getNowPlayingMovies().then((playing: Movie[]) => setPlaying(playing));
     }, []);
 
+
+
     return (
         <>
             <AppHeader/>
