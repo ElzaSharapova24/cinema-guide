@@ -8,7 +8,12 @@ import playing from "../../images/playing.png";
 import Loader from "../loader";
 
 
-function Layout({isLoading, setIsLoading}) {
+interface LayoutProps {
+    isLoading: boolean,
+    setIsLoading: (value: boolean) => void;
+}
+
+function Layout({isLoading, setIsLoading}:LayoutProps) {
     return (
         <div className={clsx(styles.app)}>
             <main>

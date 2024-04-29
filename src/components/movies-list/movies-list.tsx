@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import styles from "./movies-list.module.css"
 import {Link} from "react-router-dom";
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import Loader from "../loader";
 import BackButton from "../back-button";
 
 
-function MoviesList({movies}) {
+function MoviesList({movies}:any) {
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {

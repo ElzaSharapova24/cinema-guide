@@ -12,10 +12,10 @@ import NotFound from "../not-found";
 
 
 function App() {
-    const [popular, setPopular] = useState<Movie>(null);
-    const [upcoming, setUpcoming] = useState<Movie>(null);
-    const [rating, setRating] = useState<Movie>(null);
-    const [playing, setPlaying] = useState<Movie>(null);
+    const [popular, setPopular] = useState<Movie[] | null>(null);
+    const [upcoming, setUpcoming] = useState<Movie[] | null>(null);
+    const [rating, setRating] = useState<Movie[] | null>(null);
+    const [playing, setPlaying] = useState<Movie[] | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {

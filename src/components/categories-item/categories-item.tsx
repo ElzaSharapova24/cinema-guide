@@ -2,8 +2,14 @@ import {Link} from "react-router-dom";
 import clsx from "clsx";
 import styles from "./categories-item.module.css"
 
+interface CategoriesItemProps {
+    to: string;
+    title: string;
+    imageSrc: string;
+    altText: string;
+}
 
-function CategoriesItem ({ to, title, imageSrc, altText }) {
+function CategoriesItem ({ to, title, imageSrc, altText}:CategoriesItemProps) {
     return (
         <article data-cy="category-movie">
             <Link to={to}>

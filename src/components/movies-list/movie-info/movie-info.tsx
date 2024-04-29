@@ -4,17 +4,20 @@ import {useParams} from "react-router";
 import {Movie} from "../../../utils/types";
 import NotFound from "../../not-found";
 import Loader from "../../loader";
-import React from "react";
 import BackButton from "../../back-button";
 
 
-function MovieInfo({movies}: Movie) {
+interface MovieInfoProps {
+    movies: Movie[] | null;
+}
+function MovieInfo({movies}:MovieInfoProps) {
     const {id} = useParams();
 
     if (movies === null)
         return <Loader/>
 
-    const movie = movies.find(movie => movie.id == id);
+    const movieIdNumber = Number(id);
+    const movie:Movie | undefined = movies.find((movie)  => movie.id == movieIdNumber);
 
     return (
         movie ? (

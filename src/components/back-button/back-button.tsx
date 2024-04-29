@@ -1,4 +1,3 @@
-import React from "react";
 import clsx from "clsx";
 import styles from "./back-button.module.css"
 import {useNavigate} from "react-router";
